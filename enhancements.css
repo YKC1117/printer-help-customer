@@ -1,0 +1,12 @@
+/* v1.9 - uncertain issue direct-report mode */
+.issue-card-unknown{border-style:dashed;background:#fffaf0!important}
+.issue-card-unknown:hover{border-color:#e1b86d;background:#fff7df!important}
+.direct-help{background:#f8fbff;border:1px solid #cfe0f5;border-left:6px solid #4b82c3;border-radius:16px;padding:15px;margin-bottom:14px}
+.direct-help b{display:block;font-size:18px;color:#294f7c}
+.direct-help p{margin:5px 0 0;color:#5b6b7e;font-size:14px}
+.detail-caption{margin-top:4px!important;font-size:14px!important}
+#unknown-description{width:100%;min-height:112px;resize:vertical;padding:13px 14px;border:1px solid #d4d0cd;border-radius:14px;background:#fff;font:inherit;line-height:1.65;color:var(--ink)}
+#unknown-description:focus{outline:none;border-color:#e0716b;box-shadow:0 0 0 3px rgba(217,74,69,.11)}
+.unknown-photos .photo-checklist{margin-top:14px;background:#fffaf5}
+.direct-trouble .actions{margin-top:14px}
+@media(max-width:680px){.direct-help b{font-size:17px}.direct-help p{font-size:13px}#unknown-description{min-height:126px}.issue-card-unknown{grid-column:auto}}
