@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  const VERSION = '1.9';
+  const VERSION = '1.9.1';
   const products = Array.isArray(window.PRINTER_PRODUCTS) ? window.PRINTER_PRODUCTS : [];
   const flows = window.PRINTER_FLOWS && typeof window.PRINTER_FLOWS === 'object' ? window.PRINTER_FLOWS : {};
   const photos = window.PRINTER_PHOTOS && typeof window.PRINTER_PHOTOS === 'object' ? window.PRINTER_PHOTOS : {};
@@ -357,9 +357,6 @@
     e.preventDefault();
     activateIssue((card.getAttribute('href') || '').replace('#',''));
   }));
-
-  const footer = document.querySelector('footer');
-  if(footer) footer.textContent = '如果照步驟試過還是不行，把排查結果和照片傳給我就可以了。｜版本 ' + VERSION;
 
   document.querySelectorAll('.make-summary').forEach(btn => {
     btn.textContent = '整理＋複製排查結果';
