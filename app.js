@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  const VERSION = '1.10';
+  const VERSION = '1.10.1';
   const products = Array.isArray(window.PRINTER_PRODUCTS) ? window.PRINTER_PRODUCTS : [];
   const flows = window.PRINTER_FLOWS && typeof window.PRINTER_FLOWS === 'object' ? window.PRINTER_FLOWS : {};
   const photos = window.PRINTER_PHOTOS && typeof window.PRINTER_PHOTOS === 'object' ? window.PRINTER_PHOTOS : {};
@@ -406,7 +406,17 @@
     const photoTarget = sec.querySelector('.unknown-photos');
     if(photoTarget) photoTarget.innerHTML = photoChecklist('unknown');
     const field = sec.querySelector('#unknown-description');
+    const counter = sec.querySelector('#unknown-counter');
+
+    function updateUnknownCounter(){
+      if(!field || !counter) return;
+      const max = Number(field.maxLength) > 0 ? Number(field.maxLength) : 500;
+      counter.textContent = '已輸入 ' + field.value.length + ' / ' + max + ' 字';
+    }
+
+    updateUnknownCounter();
     field?.addEventListener('input', () => {
+      updateUnknownCounter();
       if(field.value.trim()) setUnknownError(sec, false);
     });
   }
@@ -460,6 +470,7 @@
     const expectedPrevButtons = standardSections.reduce((sum, sec) => sum + Math.max(sec.querySelectorAll('.checkstep').length - 1, 0), 0);
     const connectBackButtons = document.querySelectorAll('#connect .branch-back').length;
     const unknownErrors = document.querySelectorAll('#unknown .unknown-error').length;
+    const unknownCounters = document.querySelectorAll('#unknown #unknown-counter').length;
 
     const report = {
       version: VERSION,
@@ -474,6 +485,7 @@
       expectedPrevButtons,
       connectBackButtons,
       unknownErrors,
+      unknownCounters,
       missingTargets,
       missingFlows,
       connectBranchMarkers
@@ -490,7 +502,8 @@
       connectBranchMarkers !== 1 ||
       prevButtons !== expectedPrevButtons ||
       connectBackButtons !== 1 ||
-      unknownErrors !== 1
+      unknownErrors !== 1 ||
+      unknownCounters !== 1
     ){
       console.warn('[customer-tool self-check warning]', report);
     }
