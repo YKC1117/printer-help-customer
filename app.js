@@ -2,7 +2,7 @@
   'use strict';
 
   // Shared data and page state
-  const VERSION = '1.10.2';
+  const VERSION = '1.10.3';
   const products = Array.isArray(window.PRINTER_PRODUCTS) ? window.PRINTER_PRODUCTS : [];
   const flows = window.PRINTER_FLOWS && typeof window.PRINTER_FLOWS === 'object' ? window.PRINTER_FLOWS : {};
   const photos = window.PRINTER_PHOTOS && typeof window.PRINTER_PHOTOS === 'object' ? window.PRINTER_PHOTOS : {};
