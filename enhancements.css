@@ -10,3 +10,7 @@
 .unknown-photos .photo-checklist{margin-top:14px;background:#fffaf5}
 .direct-trouble .actions{margin-top:14px}
 @media(max-width:680px){.direct-help b{font-size:17px}.direct-help p{font-size:13px}#unknown-description{min-height:126px}.issue-card-unknown{grid-column:auto}}
+
+/* v1.9.2 - emphasize final contact reminder */
+footer{max-width:952px;margin:6px auto 28px;padding:16px 18px;border:1px solid #f0b3ae;border-left:6px solid var(--red);border-radius:14px;background:linear-gradient(135deg,#fff2f1 0%,#fff9f7 100%);color:#a72f2b;font-size:18px;font-weight:900;line-height:1.7;text-align:center;box-shadow:0 8px 20px rgba(160,48,42,.07)}
+@media(max-width:680px){footer{margin:4px 14px 22px;padding:14px 15px;font-size:16px;text-align:left}}
