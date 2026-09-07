@@ -1,4 +1,4 @@
-/* v1.10 - uncertain issue, navigation helpers, final reminder */
+/* v1.10.1 - uncertain issue, navigation helpers, character counter, final reminder */
 .issue-card-unknown{grid-column:1 / -1;border-style:dashed;background:#fffaf0!important}
 .issue-card-unknown:hover{border-color:#e1b86d;background:#fff7df!important}
 .direct-help{background:#f8fbff;border:1px solid #cfe0f5;border-left:6px solid #4b82c3;border-radius:16px;padding:15px;margin-bottom:14px}
@@ -8,6 +8,7 @@
 #unknown-description{width:100%;min-height:112px;resize:vertical;padding:13px 14px;border:1px solid #d4d0cd;border-radius:14px;background:#fff;font:inherit;line-height:1.65;color:var(--ink)}
 #unknown-description:focus{outline:none;border-color:#e0716b;box-shadow:0 0 0 3px rgba(217,74,69,.11)}
 #unknown-description.input-error{border-color:#d94a45;background:#fff8f7;box-shadow:0 0 0 3px rgba(217,74,69,.11)}
+.unknown-counter{margin:6px 2px 0;color:#8a8a8a;font-size:12px;font-weight:600;text-align:right}
 .unknown-error{margin:7px 0 0;color:#b93834;font-size:13px;font-weight:800}
 .unknown-photos .photo-checklist{margin-top:14px;background:#fffaf5}
 .direct-trouble .actions{margin-top:14px}
