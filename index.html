@@ -3,16 +3,21 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>標籤機簡易排查</title>
-<link rel="stylesheet" href="styles.css?v=1.10.1">
-<link rel="stylesheet" href="enhancements.css?v=1.10.1">
+<link rel="stylesheet" href="styles.css?v=1.10.2">
+<link rel="stylesheet" href="enhancements.css?v=1.10.2">
 </head>
 <body id="top">
-<header class="hero"><div class="wrap hero-inner"><div class="hero-badge">快速排查小工具｜目前版本 v1.10.1</div><h1>🏷️ 標籤機簡易排查</h1><p class="hero-text">先照下面幾個常見步驟試看看；如果還是沒辦法排除，把畫面或照片傳給我，我再協助處理。</p></div></header>
+<!-- Header -->
+<header class="hero"><div class="wrap hero-inner"><div class="hero-badge">快速排查小工具｜目前版本 v1.10.2</div><h1>🏷️ 標籤機簡易排查</h1><p class="hero-text">先照下面幾個常見步驟試看看；如果還是沒辦法排除，把畫面或照片傳給我，我再協助處理。</p></div></header>
 <main>
+<!-- Safety notice -->
 <section class="card intro-card"><div class="notice-box"><div class="notice-icon">⚠️</div><div><b>操作前先注意</b><ul><li>這裡只做簡單、安全的基本檢查。</li><li><strong>需要拆機、調內部零件、切刀卡死、出現異味或異音時，就先不要繼續操作。</strong></li><li>照步驟試過還是不行，把型號、錯誤畫面或照片傳給我就可以。</li></ul></div></div><noscript><div class="noscript">這個逐步排查需要 JavaScript 才能操作；若頁面沒有正常顯示，直接把型號與問題照片傳給我即可。</div></noscript></section>
+<!-- Device selection -->
 <section class="card"><h2>① 先選設備 <span class="section-note">不知道型號也可以先跳過</span></h2><div class="grid"><div><label class="caption" for="brand">品牌</label><select id="brand"><option value="">請選擇品牌（可不選）</option><option>Zebra</option><option>Argox</option><option>TSC</option><option>GoDEX</option><option>TOSHIBA</option><option>SATO</option><option>Honeywell (Datamax/Intermec)</option></select></div><div><label class="caption" for="model">型號</label><select id="model"><option value="">請先選品牌，再選型號（可不選）</option></select><div class="hint">先選品牌後會顯示該品牌型號；如果不知道型號，也可以先跳過。</div></div></div></section>
+<!-- Issue selection -->
 <section class="card"><h2>② 現在遇到什麼問題？</h2><div class="issues"><a class="issue-card" href="#power"><span class="ico">🔌</span><span><b>無法開機／完全沒反應</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#paperout"><span class="ico">📄</span><span><b>顯示 Paper Out／紙張用盡</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#ribbon"><span class="ico">🎞️</span><span><b>顯示 Ribbon Out／色帶用盡</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#connect"><span class="ico">💻</span><span><b>電腦送印沒反應／連不到印表機</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#quality"><span class="ico">🖨️</span><span><b>列印太淡／不清楚</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#feed"><span class="ico">📏</span><span><b>一直吐紙／校正後停不下來</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#jam"><span class="ico">🧻</span><span><b>卡紙／紙張越走越偏</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#cutter"><span class="ico">✂️</span><span><b>切刀不切／卡刀</b><small>開始一步一步排查</small></span></a><a class="issue-card issue-card-unknown" href="#unknown"><span class="ico">🤔</span><span><b>找不到符合的問題／不確定</b><small>直接描述狀況給我看</small></span></a></div></section>
 
+<!-- Guided troubleshooting sections -->
 <section class="trouble" id="power" data-issue="無法開機／完全沒反應">
 <div class="trouble-head"><span>🔌</span><div><h2>無法開機／完全沒反應</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div>
 <div class="handoff"><b>全部做完還是沒好？</b><p>若仍完全沒反應，或有異味、冒煙、異常高溫，請立即停止通電並把狀況傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div>
@@ -53,6 +58,7 @@
 <div class="handoff"><b>全部做完還是沒好？</b><p>切刀問題不要反覆強制測試；如果仍卡住、異音或完全不動，把照片／影片傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div>
 <div class="actions"><button type="button" class="make-summary" data-target="cutter">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-cutter" hidden></pre></section>
 
+<!-- Direct-report fallback -->
 <section class="trouble direct-trouble" id="unknown" data-issue="找不到符合的問題／不確定" data-direct="true">
 <div class="trouble-head"><span>🤔</span><div><h2>找不到符合的問題／不確定</h2><p>不用勉強選分類，直接把目前狀況傳給我看。</p></div></div>
 <div class="direct-help"><b>這種狀況我直接幫你看會比較快</b><p>簡單描述一下現在遇到什麼狀況，再把錯誤畫面或照片傳給我，我來幫你判斷。</p></div>
@@ -64,8 +70,9 @@
 <div class="actions"><button type="button" class="make-summary" data-target="unknown">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-unknown" hidden></pre>
 </section>
 </main>
+<!-- Final contact reminder -->
 <footer>如果照步驟試過還是不行，把排查結果和照片傳給我就可以了。</footer>
-<script src="data.js?v=1.10.1"></script>
-<script src="flows.js?v=1.10.1"></script>
-<script src="app.js?v=1.10.1"></script>
+<script src="data.js?v=1.10.2"></script>
+<script src="flows.js?v=1.10.2"></script>
+<script src="app.js?v=1.10.2"></script>
 </body></html>
