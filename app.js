@@ -1,7 +1,8 @@
 (function(){
   'use strict';
 
-  const VERSION = '1.10.1';
+  // Shared data and page state
+  const VERSION = '1.10.2';
   const products = Array.isArray(window.PRINTER_PRODUCTS) ? window.PRINTER_PRODUCTS : [];
   const flows = window.PRINTER_FLOWS && typeof window.PRINTER_FLOWS === 'object' ? window.PRINTER_FLOWS : {};
   const photos = window.PRINTER_PHOTOS && typeof window.PRINTER_PHOTOS === 'object' ? window.PRINTER_PHOTOS : {};
@@ -17,6 +18,7 @@
     return String(s).replace(/[&<>\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c] || c));
   }
 
+  // Device selection
   function resetModels(){
     model.innerHTML = originalOptions;
     model.value = '';
@@ -31,6 +33,7 @@
   }
   brand.addEventListener('change', filterModels);
 
+  // Reusable UI helpers
   function photoChecklist(id){
     const items = photos[id] || ['錯誤畫面', '耗材安裝狀況', '機器型號貼紙'];
     return '<div class="photo-checklist"><b>📷 請幫我拍這些</b><ol>' + items.map(x => '<li>'+esc(x)+'</li>').join('') + '</ol><span>照片不用特別整理，拍清楚就可以。</span></div>';
@@ -57,6 +60,7 @@
     });
   }
 
+  // Guided flow DOM construction
   function hydrateFlow(sec){
     const baseData = Array.isArray(flows[sec.id]) ? flows[sec.id] : null;
     if(!baseData) return;
@@ -126,6 +130,7 @@
     if(sec.id === 'connect') addConnectionBranch(sec);
   }
 
+  // Connection-specific branch logic
   function addConnectionBranch(sec){
     const box = document.createElement('div');
     box.className = 'branch-box';
@@ -184,6 +189,7 @@
     });
   }
 
+  // Guided flow state and navigation
   function setupStepFlow(sec){
     const steps = [...sec.querySelectorAll('.checkstep')];
     if(!steps.length) return;
@@ -298,6 +304,7 @@
     render();
   }
 
+  // Clipboard and result summaries
   async function copyText(text, button){
     let ok = false;
     try{
@@ -382,6 +389,7 @@
     ]).join('\n');
   }
 
+  // Direct-report (unknown issue) validation and counter
   function setUnknownError(sec, show){
     const field = sec.querySelector('#unknown-description');
     const error = sec.querySelector('.unknown-error');
@@ -421,6 +429,7 @@
     });
   }
 
+  // Bootstrap and event wiring
   document.querySelectorAll('.trouble:not([data-direct="true"])').forEach(hydrateFlow);
   document.querySelectorAll('.trouble:not([data-direct="true"])').forEach(setupStepFlow);
   document.querySelectorAll('.trouble[data-direct="true"]').forEach(setupUnknownIssue);
@@ -456,6 +465,7 @@
     });
   });
 
+  // Lightweight integrity check for future edits
   function selfCheck(){
     const brands = [...brand.options].map(o => o.value).filter(Boolean);
     const models = new Set(products.map(p => p.m));
