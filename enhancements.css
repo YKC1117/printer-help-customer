@@ -1,20 +1,113 @@
-/* v1.10.1 - uncertain issue, navigation helpers, character counter, final reminder */
-.issue-card-unknown{grid-column:1 / -1;border-style:dashed;background:#fffaf0!important}
-.issue-card-unknown:hover{border-color:#e1b86d;background:#fff7df!important}
-.direct-help{background:#f8fbff;border:1px solid #cfe0f5;border-left:6px solid #4b82c3;border-radius:16px;padding:15px;margin-bottom:14px}
-.direct-help b{display:block;font-size:18px;color:#294f7c}
-.direct-help p{margin:5px 0 0;color:#5b6b7e;font-size:14px}
-.detail-caption{margin-top:4px!important;font-size:14px!important}
-#unknown-description{width:100%;min-height:112px;resize:vertical;padding:13px 14px;border:1px solid #d4d0cd;border-radius:14px;background:#fff;font:inherit;line-height:1.65;color:var(--ink)}
-#unknown-description:focus{outline:none;border-color:#e0716b;box-shadow:0 0 0 3px rgba(217,74,69,.11)}
-#unknown-description.input-error{border-color:#d94a45;background:#fff8f7;box-shadow:0 0 0 3px rgba(217,74,69,.11)}
-.unknown-counter{margin:6px 2px 0;color:#8a8a8a;font-size:12px;font-weight:600;text-align:right}
-.unknown-error{margin:7px 0 0;color:#b93834;font-size:13px;font-weight:800}
-.unknown-photos .photo-checklist{margin-top:14px;background:#fffaf5}
-.direct-trouble .actions{margin-top:14px}
-.step-prev{border:1px solid #d8d3cf;border-radius:12px;padding:11px 14px;background:#f7f5f4;color:#5f5a57;font:inherit;font-weight:900;cursor:pointer}
-.step-prev:hover{background:#efedeb;border-color:#cfc8c4}
-.branch-back{display:block;margin:-5px 0 13px;border:0;background:transparent;color:#4b6f96;font:inherit;font-size:13px;font-weight:800;cursor:pointer;padding:3px 2px;text-decoration:underline;text-underline-offset:3px}
-.branch-back:hover{color:#294f7c}
-footer{max-width:952px;margin:6px auto 28px;padding:16px 18px;border:1px solid #f0b3ae;border-left:6px solid var(--red);border-radius:14px;background:linear-gradient(135deg,#fff2f1 0%,#fff9f7 100%);color:#a72f2b;font-size:18px;font-weight:900;line-height:1.7;text-align:center;box-shadow:0 8px 20px rgba(160,48,42,.07)}
-@media(max-width:680px){.direct-help b{font-size:17px}.direct-help p{font-size:13px}#unknown-description{min-height:126px}.issue-card-unknown{grid-column:auto}.step-prev{width:100%}.branch-back{margin-top:-2px;margin-bottom:12px}footer{margin:4px 14px 22px;padding:14px 15px;font-size:16px;text-align:left}}
+/* v1.10.2 - optional UI enhancements layered on top of styles.css */
+
+/* Unknown / direct-report card */
+.issue-card-unknown {
+  grid-column: 1 / -1;
+  border-style: dashed;
+  background: #fffaf0 !important;
+}
+.issue-card-unknown:hover {
+  border-color: #e1b86d;
+  background: #fff7df !important;
+}
+
+.direct-help {
+  background: #f8fbff;
+  border: 1px solid #cfe0f5;
+  border-left: 6px solid #4b82c3;
+  border-radius: 16px;
+  padding: 15px;
+  margin-bottom: 14px;
+}
+.direct-help b { display: block; font-size: 18px; color: #294f7c; }
+.direct-help p { margin: 5px 0 0; color: #5b6b7e; font-size: 14px; }
+.detail-caption { margin-top: 4px !important; font-size: 14px !important; }
+
+#unknown-description {
+  width: 100%;
+  min-height: 112px;
+  resize: vertical;
+  padding: 13px 14px;
+  border: 1px solid #d4d0cd;
+  border-radius: 14px;
+  background: #fff;
+  font: inherit;
+  line-height: 1.65;
+  color: var(--ink);
+}
+#unknown-description:focus {
+  outline: none;
+  border-color: #e0716b;
+  box-shadow: 0 0 0 3px rgba(217, 74, 69, .11);
+}
+#unknown-description.input-error {
+  border-color: #d94a45;
+  background: #fff8f7;
+  box-shadow: 0 0 0 3px rgba(217, 74, 69, .11);
+}
+.unknown-counter {
+  margin: 6px 2px 0;
+  color: #8a8a8a;
+  font-size: 12px;
+  font-weight: 600;
+  text-align: right;
+}
+.unknown-error { margin: 7px 0 0; color: #b93834; font-size: 13px; font-weight: 800; }
+.unknown-photos .photo-checklist { margin-top: 14px; background: #fffaf5; }
+.direct-trouble .actions { margin-top: 14px; }
+
+/* Secondary navigation */
+.step-prev {
+  border: 1px solid #d8d3cf;
+  border-radius: 12px;
+  padding: 11px 14px;
+  background: #f7f5f4;
+  color: #5f5a57;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+.step-prev:hover { background: #efedeb; border-color: #cfc8c4; }
+
+.branch-back {
+  display: block;
+  margin: -5px 0 13px;
+  border: 0;
+  background: transparent;
+  color: #4b6f96;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 3px 2px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.branch-back:hover { color: #294f7c; }
+
+/* Final contact reminder */
+footer {
+  max-width: 952px;
+  margin: 6px auto 28px;
+  padding: 16px 18px;
+  border: 1px solid #f0b3ae;
+  border-left: 6px solid var(--red);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff2f1 0%, #fff9f7 100%);
+  color: #a72f2b;
+  font-size: 18px;
+  font-weight: 900;
+  line-height: 1.7;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(160, 48, 42, .07);
+}
+
+@media (max-width: 680px) {
+  .direct-help b { font-size: 17px; }
+  .direct-help p { font-size: 13px; }
+  #unknown-description { min-height: 126px; }
+  .issue-card-unknown { grid-column: auto; }
+  .step-prev { width: 100%; }
+  .branch-back { margin-top: -2px; margin-bottom: 12px; }
+  footer { margin: 4px 14px 22px; padding: 14px 15px; font-size: 16px; text-align: left; }
+}
