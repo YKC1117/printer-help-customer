@@ -7,21 +7,60 @@
 <link rel="stylesheet" href="enhancements.css?v=1.9">
 </head>
 <body id="top">
-<header class="hero"><div class="wrap hero-inner"><div class="hero-badge">快速排查小工具</div><h1>🏷️ 標籤機簡易排查</h1><p class="hero-text">先照下面幾個常見步驟試看看；如果還是沒辦法排除，把畫面或照片傳給我，我再協助處理。</p></div></header>
+<header class="hero"><div class="wrap hero-inner"><div class="hero-badge">快速排查小工具｜目前版本 v1.9</div><h1>🏷️ 標籤機簡易排查</h1><p class="hero-text">先照下面幾個常見步驟試看看；如果還是沒辦法排除，把畫面或照片傳給我，我再協助處理。</p></div></header>
 <main>
 <section class="card intro-card"><div class="notice-box"><div class="notice-icon">⚠️</div><div><b>操作前先注意</b><ul><li>這裡只做簡單、安全的基本檢查。</li><li><strong>需要拆機、調內部零件、切刀卡死、出現異味或異音時，就先不要繼續操作。</strong></li><li>照步驟試過還是不行，把型號、錯誤畫面或照片傳給我就可以。</li></ul></div></div><noscript><div class="noscript">這個逐步排查需要 JavaScript 才能操作；若頁面沒有正常顯示，直接把型號與問題照片傳給我即可。</div></noscript></section>
 <section class="card"><h2>① 先選設備 <span class="section-note">不知道型號也可以先跳過</span></h2><div class="grid"><div><label class="caption" for="brand">品牌</label><select id="brand"><option value="">請選擇品牌（可不選）</option><option>Zebra</option><option>Argox</option><option>TSC</option><option>GoDEX</option><option>TOSHIBA</option><option>SATO</option><option>Honeywell (Datamax/Intermec)</option></select></div><div><label class="caption" for="model">型號</label><select id="model"><option value="">請先選品牌，再選型號（可不選）</option></select><div class="hint">先選品牌後會顯示該品牌型號；如果不知道型號，也可以先跳過。</div></div></div></section>
 <section class="card"><h2>② 現在遇到什麼問題？</h2><div class="issues"><a class="issue-card" href="#power"><span class="ico">🔌</span><span><b>無法開機／完全沒反應</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#paperout"><span class="ico">📄</span><span><b>顯示 Paper Out／紙張用盡</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#ribbon"><span class="ico">🎞️</span><span><b>顯示 Ribbon Out／色帶用盡</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#connect"><span class="ico">💻</span><span><b>電腦送印沒反應／連不到印表機</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#quality"><span class="ico">🖨️</span><span><b>列印太淡／不清楚</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#feed"><span class="ico">📏</span><span><b>一直吐紙／校正後停不下來</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#jam"><span class="ico">🧻</span><span><b>卡紙／紙張越走越偏</b><small>開始一步一步排查</small></span></a><a class="issue-card" href="#cutter"><span class="ico">✂️</span><span><b>切刀不切／卡刀</b><small>開始一步一步排查</small></span></a><a class="issue-card issue-card-unknown" href="#unknown"><span class="ico">🤔</span><span><b>找不到符合的問題／不確定</b><small>直接描述狀況給我看</small></span></a></div></section>
 
-<section class="trouble" id="power" data-issue="無法開機／完全沒反應"><div class="trouble-head"><span>🔌</span><div><h2>無法開機／完全沒反應</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div><div class="handoff"><b>全部做完還是沒好？</b><p>若仍完全沒反應，或有異味、冒煙、異常高溫，請立即停止通電並把狀況傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div><div class="actions"><button type="button" class="make-summary" data-target="power">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-power" hidden></pre></section>
-<section class="trouble" id="paperout" data-issue="顯示 Paper Out／紙張用盡"><div class="trouble-head"><span>📄</span><div><h2>顯示 Paper Out／紙張用盡</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div><div class="handoff"><b>全部做完還是沒好？</b><p>如果紙張已重新安裝仍持續顯示 Paper Out，就先不用一直重複操作，把照片傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div><div class="actions"><button type="button" class="make-summary" data-target="paperout">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-paperout" hidden></pre></section>
-<section class="trouble" id="ribbon" data-issue="顯示 Ribbon Out／色帶用盡"><div class="trouble-head"><span>🎞️</span><div><h2>顯示 Ribbon Out／色帶用盡</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div><div class="handoff"><b>全部做完還是沒好？</b><p>如果碳帶已重新安裝仍持續顯示 Ribbon Out，把錯誤畫面與碳帶安裝照片傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div><div class="actions"><button type="button" class="make-summary" data-target="ribbon">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-ribbon" hidden></pre></section>
-<section class="trouble" id="connect" data-issue="電腦送印沒反應／連不到印表機"><div class="trouble-head"><span>💻</span><div><h2>電腦送印沒反應／連不到印表機</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div><div class="handoff"><b>全部做完還是沒好？</b><p>如果 Windows 測試頁也無法列印，把錯誤畫面和目前是 USB／網路連線一起傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div><div class="actions"><button type="button" class="make-summary" data-target="connect">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-connect" hidden></pre></section>
-<section class="trouble" id="quality" data-issue="列印太淡／不清楚"><div class="trouble-head"><span>🖨️</span><div><h2>列印太淡／不清楚</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div><div class="handoff"><b>全部做完還是沒好？</b><p>如果重新安裝與簡單清潔後仍不清楚，把實際列印照片、標籤紙與碳帶資訊傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div><div class="actions"><button type="button" class="make-summary" data-target="quality">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-quality" hidden></pre></section>
-<section class="trouble" id="feed" data-issue="一直吐紙／校正後停不下來"><div class="trouble-head"><span>📏</span><div><h2>一直吐紙／校正後停不下來</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div><div class="handoff"><b>全部做完還是沒好？</b><p>如果仍然連續吐很多張，就停止重複校正，把吐紙影片與標籤正反面傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div><div class="actions"><button type="button" class="make-summary" data-target="feed">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-feed" hidden></pre></section>
-<section class="trouble" id="jam" data-issue="卡紙／紙張越走越偏"><div class="trouble-head"><span>🧻</span><div><h2>卡紙／紙張越走越偏</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div><div class="handoff"><b>全部做完還是沒好？</b><p>如果重新裝紙後仍明顯向單側偏移或反覆卡紙，就停止大量列印並把狀況傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div><div class="actions"><button type="button" class="make-summary" data-target="jam">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-jam" hidden></pre></section>
-<section class="trouble" id="cutter" data-issue="切刀不切／卡刀"><div class="trouble-head"><span>✂️</span><div><h2>切刀不切／卡刀</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div><div class="handoff"><b>全部做完還是沒好？</b><p>切刀問題不要反覆強制測試；如果仍卡住、異音或完全不動，把照片／影片傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div><div class="actions"><button type="button" class="make-summary" data-target="cutter">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-cutter" hidden></pre></section>
-<section class="trouble direct-trouble" id="unknown" data-issue="找不到符合的問題／不確定" data-direct="true"><div class="trouble-head"><span>🤔</span><div><h2>找不到符合的問題／不確定</h2><p>不用勉強選分類，直接把目前狀況傳給我看。</p></div></div><div class="direct-help"><b>這種狀況我直接幫你看會比較快</b><p>簡單描述一下現在遇到什麼狀況，再把錯誤畫面或照片傳給我，我來幫你判斷。</p></div><label class="caption detail-caption" for="unknown-description">簡單描述目前狀況</label><textarea id="unknown-description" rows="4" maxlength="500" placeholder="例如：印到一半突然停住，重開機後還是一樣。"></textarea><div class="unknown-photos"></div><div class="actions"><button type="button" class="make-summary" data-target="unknown">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-unknown" hidden></pre></section>
+<section class="trouble" id="power" data-issue="無法開機／完全沒反應">
+<div class="trouble-head"><span>🔌</span><div><h2>無法開機／完全沒反應</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div>
+<div class="handoff"><b>全部做完還是沒好？</b><p>若仍完全沒反應，或有異味、冒煙、異常高溫，請立即停止通電並把狀況傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div>
+<div class="actions"><button type="button" class="make-summary" data-target="power">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-power" hidden></pre></section>
+
+<section class="trouble" id="paperout" data-issue="顯示 Paper Out／紙張用盡">
+<div class="trouble-head"><span>📄</span><div><h2>顯示 Paper Out／紙張用盡</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div>
+<div class="handoff"><b>全部做完還是沒好？</b><p>如果紙張已重新安裝仍持續顯示 Paper Out，就先不用一直重複操作，把照片傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div>
+<div class="actions"><button type="button" class="make-summary" data-target="paperout">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-paperout" hidden></pre></section>
+
+<section class="trouble" id="ribbon" data-issue="顯示 Ribbon Out／色帶用盡">
+<div class="trouble-head"><span>🎞️</span><div><h2>顯示 Ribbon Out／色帶用盡</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div>
+<div class="handoff"><b>全部做完還是沒好？</b><p>如果碳帶已重新安裝仍持續顯示 Ribbon Out，把錯誤畫面與碳帶安裝照片傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div>
+<div class="actions"><button type="button" class="make-summary" data-target="ribbon">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-ribbon" hidden></pre></section>
+
+<section class="trouble" id="connect" data-issue="電腦送印沒反應／連不到印表機">
+<div class="trouble-head"><span>💻</span><div><h2>電腦送印沒反應／連不到印表機</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div>
+<div class="handoff"><b>全部做完還是沒好？</b><p>如果 Windows 測試頁也無法列印，把錯誤畫面和目前是 USB／網路連線一起傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div>
+<div class="actions"><button type="button" class="make-summary" data-target="connect">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-connect" hidden></pre></section>
+
+<section class="trouble" id="quality" data-issue="列印太淡／不清楚">
+<div class="trouble-head"><span>🖨️</span><div><h2>列印太淡／不清楚</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div>
+<div class="handoff"><b>全部做完還是沒好？</b><p>如果重新安裝與簡單清潔後仍不清楚，把實際列印照片、標籤紙與碳帶資訊傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div>
+<div class="actions"><button type="button" class="make-summary" data-target="quality">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-quality" hidden></pre></section>
+
+<section class="trouble" id="feed" data-issue="一直吐紙／校正後停不下來">
+<div class="trouble-head"><span>📏</span><div><h2>一直吐紙／校正後停不下來</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div>
+<div class="handoff"><b>全部做完還是沒好？</b><p>如果仍然連續吐很多張，就停止重複校正，把吐紙影片與標籤正反面傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div>
+<div class="actions"><button type="button" class="make-summary" data-target="feed">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-feed" hidden></pre></section>
+
+<section class="trouble" id="jam" data-issue="卡紙／紙張越走越偏">
+<div class="trouble-head"><span>🧻</span><div><h2>卡紙／紙張越走越偏</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div>
+<div class="handoff"><b>全部做完還是沒好？</b><p>如果重新裝紙後仍明顯向單側偏移或反覆卡紙，就停止大量列印並把狀況傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div>
+<div class="actions"><button type="button" class="make-summary" data-target="jam">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-jam" hidden></pre></section>
+
+<section class="trouble" id="cutter" data-issue="切刀不切／卡刀">
+<div class="trouble-head"><span>✂️</span><div><h2>切刀不切／卡刀</h2><p>一次只做一個步驟，還沒好再繼續。</p></div></div>
+<div class="handoff"><b>全部做完還是沒好？</b><p>切刀問題不要反覆強制測試；如果仍卡住、異音或完全不動，把照片／影片傳給我。</p><p class="need">傳給我時，最好一起提供：<strong>品牌／型號、錯誤畫面或列印照片、耗材安裝照片、問題發生時機</strong>。</p></div>
+<div class="actions"><button type="button" class="make-summary" data-target="cutter">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-cutter" hidden></pre></section>
+
+<section class="trouble direct-trouble" id="unknown" data-issue="找不到符合的問題／不確定" data-direct="true">
+<div class="trouble-head"><span>🤔</span><div><h2>找不到符合的問題／不確定</h2><p>不用勉強選分類，直接把目前狀況傳給我看。</p></div></div>
+<div class="direct-help"><b>這種狀況我直接幫你看會比較快</b><p>簡單描述一下現在遇到什麼狀況，再把錯誤畫面或照片傳給我，我來幫你判斷。</p></div>
+<label class="caption detail-caption" for="unknown-description">簡單描述目前狀況</label>
+<textarea id="unknown-description" rows="4" maxlength="500" placeholder="例如：印到一半突然停住，重開機後還是一樣。"></textarea>
+<div class="unknown-photos"></div>
+<div class="actions"><button type="button" class="make-summary" data-target="unknown">整理目前排查結果</button><a href="#top" class="back">回到最上方</a></div><pre class="summary" id="summary-unknown" hidden></pre>
+</section>
 </main>
 <footer>如果照步驟試過還是不行，把排查結果和照片傳給我就可以了。｜版本 1.9</footer>
 <script src="data.js?v=1.9"></script>
