@@ -1,7 +1,7 @@
 (function(){
   'use strict';
 
-  const VERSION = '1.9.1';
+  const VERSION = '1.10';
   const products = Array.isArray(window.PRINTER_PRODUCTS) ? window.PRINTER_PRODUCTS : [];
   const flows = window.PRINTER_FLOWS && typeof window.PRINTER_FLOWS === 'object' ? window.PRINTER_FLOWS : {};
   const photos = window.PRINTER_PHOTOS && typeof window.PRINTER_PHOTOS === 'object' ? window.PRINTER_PHOTOS : {};
@@ -65,7 +65,7 @@
     // 使用 handledByBranch 標記過濾，避免未來新增或調整順序時誤刪其他步驟。
     const data = baseData.filter(step => !step.handledByBranch);
 
-    sec.querySelectorAll('.checkstep,.flow-help,.flow-progress,.solved-box,.branch-box,.branch-stop').forEach(x => x.remove());
+    sec.querySelectorAll('.checkstep,.flow-help,.flow-progress,.solved-box,.branch-box,.branch-stop,.branch-back').forEach(x => x.remove());
     const hand = sec.querySelector('.handoff');
     if(!hand) return;
     const issue = sec.dataset.issue || '';
@@ -90,6 +90,15 @@
 
       const controls = document.createElement('div');
       controls.className = 'step-controls';
+
+      if(i > 0){
+        const prev = document.createElement('button');
+        prev.type = 'button';
+        prev.className = 'step-prev';
+        prev.textContent = '← 上一步';
+        controls.append(prev);
+      }
+
       const next = document.createElement('button');
       next.type = 'button';
       next.className = 'step-next';
@@ -139,6 +148,7 @@
         box.hidden = true;
         stop.hidden = false;
         sec.querySelector('.flow-progress')?.setAttribute('hidden','');
+        sec.querySelector('.branch-back')?.setAttribute('hidden','');
         sec.querySelectorAll('.checkstep').forEach(x => x.hidden = true);
         sec.querySelector('.handoff').hidden = true;
         return;
@@ -184,11 +194,21 @@
     const anchor = sec.querySelector('.branch-box') || sec.querySelector('.flow-help');
     anchor?.after(progress);
 
+    let branchBack = null;
+    if(sec.id === 'connect'){
+      branchBack = document.createElement('button');
+      branchBack.type = 'button';
+      branchBack.className = 'branch-back';
+      branchBack.textContent = '← 這題答錯了，回分支題';
+      branchBack.hidden = true;
+      progress.after(branchBack);
+    }
+
     const solvedBox = document.createElement('div');
     solvedBox.className = 'solved-box';
     solvedBox.hidden = true;
     solvedBox.innerHTML = '<div class="solved-icon">🎉</div><div><b>太好了，問題已排除</b><p>建議再正常操作 2～3 次確認穩定。如果之後又發生，再把狀況傳給我就可以。</p><button type="button" class="restart-flow">重新排查</button></div>';
-    progress.after(solvedBox);
+    (branchBack || progress).after(solvedBox);
 
     let current = 0;
     let solved = false;
@@ -207,6 +227,7 @@
       progress.querySelector('.flow-count').textContent = done === steps.length ? '基本排查已完成' : '目前第 ' + Math.min(current + 1, steps.length) + ' / ' + steps.length + ' 步';
       progress.querySelector('.flow-percent').textContent = pct + '%';
       progress.querySelector('i').style.width = pct + '%';
+      if(branchBack) branchBack.hidden = solved || !canShow;
       const hand = sec.querySelector('.handoff');
       if(hand) hand.hidden = solved || !canShow || current < steps.length;
       solvedBox.hidden = !solved;
@@ -224,6 +245,13 @@
 
     steps.forEach((step, i) => {
       const input = step.querySelector('input');
+
+      step.querySelector('.step-prev')?.addEventListener('click', () => {
+        current = Math.max(0, i - 1);
+        render();
+        setTimeout(() => steps[current].scrollIntoView({behavior:'smooth', block:'center'}), 80);
+      });
+
       step.querySelector('.step-next')?.addEventListener('click', () => {
         input.checked = true;
         current = i + 1;
@@ -234,6 +262,7 @@
           sec.querySelector('.handoff')?.scrollIntoView({behavior:'smooth', block:'center'});
         }
       });
+
       step.querySelector('.step-solved')?.addEventListener('click', () => {
         input.checked = true;
         current = i + 1;
@@ -241,6 +270,16 @@
         render();
         solvedBox.scrollIntoView({behavior:'smooth', block:'center'});
       });
+    });
+
+    branchBack?.addEventListener('click', () => {
+      branchReady = false;
+      const branch = sec.querySelector('.branch-box');
+      const stop = sec.querySelector('.branch-stop');
+      if(branch) branch.hidden = false;
+      if(stop) stop.hidden = true;
+      render();
+      branch?.scrollIntoView({behavior:'smooth', block:'center'});
     });
 
     solvedBox.querySelector('.restart-flow')?.addEventListener('click', () => {
@@ -334,7 +373,7 @@
       '品牌：' + (brand.value || '未填'),
       '型號：' + (model.value || '未填'),
       '問題：找不到符合的問題／不確定',
-      '狀況描述：' + (detail || '未填'),
+      '狀況描述：' + detail,
       '',
       '建議附上照片：'
     ].concat(photoItems.map((x, i) => (i + 1) + '. ' + x)).concat([
@@ -343,10 +382,33 @@
     ]).join('\n');
   }
 
+  function setUnknownError(sec, show){
+    const field = sec.querySelector('#unknown-description');
+    const error = sec.querySelector('.unknown-error');
+    if(field) field.classList.toggle('input-error', show);
+    if(error) error.hidden = !show;
+  }
+
+  function validateUnknown(sec){
+    const field = sec.querySelector('#unknown-description');
+    if(!field) return true;
+    const valid = field.value.trim().length > 0;
+    setUnknownError(sec, !valid);
+    if(!valid){
+      field.focus();
+      field.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+    return valid;
+  }
+
   function setupUnknownIssue(sec){
     addBackButton(sec);
     const photoTarget = sec.querySelector('.unknown-photos');
     if(photoTarget) photoTarget.innerHTML = photoChecklist('unknown');
+    const field = sec.querySelector('#unknown-description');
+    field?.addEventListener('input', () => {
+      if(field.value.trim()) setUnknownError(sec, false);
+    });
   }
 
   document.querySelectorAll('.trouble:not([data-direct="true"])').forEach(hydrateFlow);
@@ -363,6 +425,9 @@
     btn.addEventListener('click', async () => {
       const sec = document.getElementById(btn.dataset.target);
       if(!sec) return;
+
+      if(sec.dataset.direct === 'true' && !validateUnknown(sec)) return;
+
       const text = sec.dataset.direct === 'true' ? makeUnknownSummary(sec) : makeSummary(sec);
       const pre = document.getElementById('summary-' + btn.dataset.target);
       if(pre){ pre.textContent = text; pre.hidden = false; }
@@ -390,6 +455,11 @@
     const missingTargets = issueCards.map(card => (card.getAttribute('href') || '').replace('#','')).filter(id => !document.getElementById(id));
     const missingFlows = standardSections.map(sec => sec.id).filter(id => !Array.isArray(flows[id]));
     const connectBranchMarkers = Array.isArray(flows.connect) ? flows.connect.filter(step => step.handledByBranch).length : 0;
+    const stepCount = document.querySelectorAll('.checkstep').length;
+    const prevButtons = document.querySelectorAll('.step-prev').length;
+    const expectedPrevButtons = standardSections.reduce((sum, sec) => sum + Math.max(sec.querySelectorAll('.checkstep').length - 1, 0), 0);
+    const connectBackButtons = document.querySelectorAll('#connect .branch-back').length;
+    const unknownErrors = document.querySelectorAll('#unknown .unknown-error').length;
 
     const report = {
       version: VERSION,
@@ -399,13 +469,29 @@
       issueCards: issueCards.length,
       standardFlows: standardSections.length,
       directIssues: directSections.length,
-      steps: document.querySelectorAll('.checkstep').length,
+      steps: stepCount,
+      prevButtons,
+      expectedPrevButtons,
+      connectBackButtons,
+      unknownErrors,
       missingTargets,
       missingFlows,
       connectBranchMarkers
     };
     console.info('[customer-tool self-check]', report);
-    if(brands.length !== 7 || products.length !== 111 || issueCards.length !== 9 || standardSections.length !== 8 || directSections.length !== 1 || missingTargets.length || missingFlows.length || connectBranchMarkers !== 1){
+    if(
+      brands.length !== 7 ||
+      products.length !== 111 ||
+      issueCards.length !== 9 ||
+      standardSections.length !== 8 ||
+      directSections.length !== 1 ||
+      missingTargets.length ||
+      missingFlows.length ||
+      connectBranchMarkers !== 1 ||
+      prevButtons !== expectedPrevButtons ||
+      connectBackButtons !== 1 ||
+      unknownErrors !== 1
+    ){
       console.warn('[customer-tool self-check warning]', report);
     }
   }
